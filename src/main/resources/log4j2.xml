@@ -6,8 +6,8 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Root level="all" includeLocation="false">
+        <AsyncRoot level="all" includeLocation="false">
             <AppenderRef ref="stdout"/>
-        </Root>
+        </AsyncRoot>
     </Loggers>
 </Configuration>
