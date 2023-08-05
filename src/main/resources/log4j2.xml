@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
     <Appenders>
-        <Console name="stdout" target="SYSTEM_OUT">
-            <JsonTemplateLayout eventTemplateUri="classpath:LogstashJsonEventLayoutV1.json"/>
-        </Console>
+        <Select>
+            <SystemPropertyArbiter propertyName="ramstore.log.format" propertyValue="json">
+                <Console name="stdout" target="SYSTEM_OUT">
+                    <JsonTemplateLayout eventTemplateUri="classpath:LogstashJsonEventLayoutV1.json"/>
+                </Console>
+            </SystemPropertyArbiter>
+            <DefaultArbiter>
+                <Console name="stdout" target="SYSTEM_OUT">
+                    <PatternLayout charset="UTF-8" pattern="%d{ISO8601} %highlight{%-5level} %threadName %c - %mdc - %msg%n%xThrowable"/>
+                </Console>
+            </DefaultArbiter>
+        </Select>
     </Appenders>
+
     <Loggers>
-        <AsyncRoot level="all" includeLocation="false">
+        <AsyncRoot level="info" includeLocation="false">
             <AppenderRef ref="stdout"/>
         </AsyncRoot>
     </Loggers>

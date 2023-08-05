@@ -12,12 +12,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import us.abbies.b.ramstore.server.discard.DiscardServerHandler;
 
-public class DiscardServer {
-    private static final Logger log = LogManager.getLogger(DiscardServer.class);
+public class RespServer {
+    private static final Logger log = LogManager.getLogger(RespServer.class);
 
     private int port;
 
-    public DiscardServer(int port) {
+    public RespServer(int port) {
         this.port = port;
     }
 
@@ -51,11 +51,11 @@ public class DiscardServer {
     }
 
     public static void main(String[] args) {
-        int port = 8080;
+        int port = 6379;
         if (args.length > 0) {
             port = Integer.parseInt(args[0]);
         }
 
-        new DiscardServer(port).run();
+        new RespServer(port).run();
     }
 }
