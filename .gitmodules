@@ -1,0 +1,4 @@
+[submodule "thirdparty/redis"]
+	path = thirdparty/redis
+	url = https://github.com/redis/redis.git
+	branch = 7.2
